@@ -1,5 +1,5 @@
 # 💫 About Me:
-👋 Hi, I'm Rémy a passionate futur fullstack developper from France,<br>🏴‍☠️ Anime and sneakers lover,<br>🌱 I’m currently developing KicksFolio your next favorite sneakers app,<br>🔗 Here you can see my portfolio : https://remyshift.dev<br>📫 How to reach me contact@remyshift.dev,<br>⚡ Fun fact : a good developer is a developer who doesn't know but seeks to,
+👋 Hi, I'm Rémy a passionate fullstack developper from France,<br>🏴‍☠️ Anime and sneakers lover,<br>🌱 I’m currently developing KicksFolio your next favorite sneakers app,<br>🔗 Here you can see my portfolio : https://remyshift.dev<br>📫 How to reach me contact@remyshift.dev,<br>⚡ Fun fact : a good developer is a developer who doesn't know but seeks to,
 
 
 ## 🌐 Socials:
