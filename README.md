@@ -1,5 +1,5 @@
 # 💫 About Me:
-👋 Hi, I'm Rémy a passionate fullstack developper from France,<br>🏴‍☠️ Anime and sneakers lover,<br>🌱 I’m currently working and growing with Oli's Lab a clena cosmetic ecommerce,<br>🔗 Here you can see my portfolio : https://remy-shift.dev<br>📫 How to reach me contact@remy-shift.dev,<br>⚡ Fun fact : a good developer is a developer who doesn't know but seeks to,
+👋 Hi, I'm Rémy a passionate fullstack developper from France,<br>🏴‍☠️ Anime and sneakers lover,<br>🌱 I’m currently working and growing with Oli's Lab a clean cosmetic ecommerce,<br>🔗 Here you can see my portfolio : https://remy-shift.dev<br>📫 How to reach me contact@remy-shift.dev,<br>⚡ Fun fact : a good developer is a developer who doesn't know but seeks to,
 
 
 ## 🌐 Socials:
