@@ -9,9 +9,7 @@
 <p>
 <a href="https://remy-shift.dev"><b>remy-shift.dev</b></a>
 &nbsp;&middot;&nbsp;
-<a href="https://linkedin.com/in/r%C3%A9my-c-bb8b11296/">LinkedIn</a>
-&nbsp;&middot;&nbsp;
-<a href="https://instagram.com/remyshift">Instagram</a>
+<a href="https://www.linkedin.com/in/remy-cassagne">LinkedIn</a>
 &nbsp;&middot;&nbsp;
 <a href="mailto:contact@remy-shift.dev">contact@remy-shift.dev</a>
 </p>
