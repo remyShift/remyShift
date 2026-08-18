@@ -97,7 +97,7 @@ def build_svg(matrix, invert: bool = False) -> str:
 
     parts.extend(
         f.replace(f'fill="{chassis.SCREEN}"', f'fill="{screen}"')
-        for f in chassis.build(width, height, chassis.prompt("whoiam"))
+        for f in chassis.build(width, height, chassis.prompt("whoami"))
     )
 
     parts.append("<defs>")
