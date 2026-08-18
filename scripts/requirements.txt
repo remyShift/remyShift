@@ -1,0 +1,3 @@
+# Dependencies for the daily workflow: fetching and rendering the calendar.
+requests==2.34.2
+beautifulsoup4==4.15.0

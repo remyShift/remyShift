@@ -1,0 +1,48 @@
+name: update profile art
+
+on:
+  schedule:
+    # Daily around 06:17 UTC. Offset minute to avoid the on-the-hour rush of
+    # cron jobs on GitHub's side.
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-profile-art
+  cancel-in-progress: true
+
+jobs:
+  refresh-heatmap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Fetch contributions
+        # The script exits with an error if GitHub markup has changed: a red
+        # workflow beats an empty calendar committed in silence.
+        run: python scripts/fetch_contributions.py "${{ github.repository_owner }}" data/contributions.json
+
+      - name: Render the calendar
+        run: python scripts/render_heatmap_svg.py data/contributions.json contrib-heatmap.svg
+
+      - name: Commit if the render changed
+        run: |
+          if git diff --quiet -- contrib-heatmap.svg data/contributions.json; then
+            echo "no change, nothing to commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add contrib-heatmap.svg data/contributions.json
+          git commit -m "chore: refresh contribution heatmap [skip ci]"
+          git push

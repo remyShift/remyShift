@@ -1,0 +1,4 @@
+# ASCII portrait dependencies only. Generated once locally, never in CI, so
+# there is no point installing these in the workflow.
+pillow==12.3.0
+numpy==2.5.2

@@ -1,0 +1,92 @@
+# Generating the profile SVGs
+
+Three SVGs, all self-contained: GitHub serves README images through its own
+proxy, so an SVG cannot make any external request. System fonts, SMIL or
+embedded CSS animations, nothing else.
+
+## The calendar, automatic
+
+Refreshed daily by `.github/workflows/update-profile-art.yml`. Nothing to do
+by hand. To replay it locally:
+
+```bash
+pip install -r scripts/requirements.txt
+python scripts/fetch_contributions.py remyShift data/contributions.json
+python scripts/render_heatmap_svg.py data/contributions.json contrib-heatmap.svg
+```
+
+The fetcher scrapes the public HTML page, so no token is needed. In exchange
+the markup can change: the script then exits with an error instead of writing
+an empty calendar, and the workflow goes red.
+
+The calendar reflects whatever GitHub publishes on the public profile page.
+Private repository activity is included only while **Contribution settings ->
+Private contributions** is enabled on the account; turn it off and the numbers
+silently drop back to public-only. No code change either way.
+
+## The identity card, by hand
+
+Content is the `ROWS` list at the top of `make_info_card.py`. After editing:
+
+```bash
+python scripts/make_info_card.py info-card.svg
+```
+
+## The portrait, once
+
+Only needs regenerating if the photo changes.
+
+```bash
+pip install -r scripts/requirements-portrait.txt
+python scripts/prep_photo.py <photo.png> data/portrait-prepped.png
+python scripts/make_ascii_svg.py data/portrait-prepped.png remy-ascii.svg
+```
+
+`prep_photo.py` detects a coloured ring around the subject, flattens the
+uniform background and frames on the head. That last part matters: frame on
+the bust and the shoulders are three times wider than the head, which makes
+the face unreadable.
+
+`--invert` renders light ink on a dark screen, which concentrates glyph
+density on the face and gives it more detail. Without the flag, the default:
+dark ink on a light screen, sharper silhouette, softer face. Match it to
+`THEME` in `palette.py` or the portrait will not sit with the other two
+panels.
+
+## Chassis
+
+`chassis.py` draws the cream shell, the wine bezel and the recessed screen,
+plus the prompt line. Modelled on `WineBorder.tsx` and `Screen.tsx` of the
+portfolio, where the bezel is a filled wine block with the screen sitting
+inside it, not a hairline stroke. All three generators call it, so widening
+`BEZEL_W` once changes every panel.
+
+Panel sizes are derived from their content, so changing `BEZEL_W` or `INSET`
+changes the SVG dimensions. The `width` attributes in the root `README.md`
+have to be recomputed to keep the two top panels the same height and their
+total equal to the calendar width.
+
+## Palette
+
+`palette.py`, taken from `tailwind.config.ts` of the remy-shift.dev portfolio.
+All three generators import from it, so changing a colour in one place is
+enough.
+
+Two themes. Switch with `THEME = LIGHT` or `THEME = DARK`, then re-render all
+three files (and add or drop `--invert` on the portrait to match).
+
+`LIGHT` is the default because WINE is a dark colour: it works as ink on a
+light screen and is unusable as a fill on a dark one, where its luminance
+(0.165) falls below the empty cell. On `LIGHT` it is the peak of the ramp; on
+`DARK` it only survives in the prompt line, on the cream shell.
+
+Two rules any new ramp has to keep, both learned the hard way:
+
+- Luminance moves strictly in one direction, climbing on dark, falling on
+  light. Break it and a one-contribution day reads as emptier than a blank one.
+- The empty level stays neutral and clearly separated from the screen,
+  otherwise the grid stops reading as a calendar and looks like scattered dots.
+
+Level 1 covers most days on an active account, so its colour sets the overall
+impression far more than the peak does. That is why the light ramp starts
+grey-brown rather than pale pink.
