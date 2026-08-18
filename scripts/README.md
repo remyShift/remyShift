@@ -24,22 +24,27 @@ Private repository activity is included only while **Contribution settings ->
 Private contributions** is enabled on the account; turn it off and the numbers
 silently drop back to public-only. No code change either way.
 
-## The identity card, by hand
+## The banner, by hand
 
-Content is the `ROWS` list at the top of `make_info_card.py`. After editing:
+Portrait and identity panel share one screen, laid out like real neofetch
+output. Content is the `ROWS` list at the top of `make_banner.py`. After
+editing:
 
 ```bash
-python scripts/make_info_card.py info-card.svg
+python scripts/make_banner.py data/portrait-prepped.png banner.svg
 ```
+
+The panel carries its own prompt line, which is why the README has no heading
+above it. Adding one would say the same thing twice.
 
 ## The portrait, once
 
-Only needs regenerating if the photo changes.
+Only needs re-preparing if the photo changes.
 
 ```bash
 pip install -r scripts/requirements-portrait.txt
 python scripts/prep_photo.py <photo.png> data/portrait-prepped.png
-python scripts/make_ascii_svg.py data/portrait-prepped.png remy-ascii.svg
+python scripts/make_banner.py data/portrait-prepped.png banner.svg
 ```
 
 `prep_photo.py` detects a coloured ring around the subject, flattens the
@@ -47,11 +52,11 @@ uniform background and frames on the head. That last part matters: frame on
 the bust and the shoulders are three times wider than the head, which makes
 the face unreadable.
 
-`--invert` renders light ink on a dark screen, which concentrates glyph
-density on the face and gives it more detail. Without the flag, the default:
-dark ink on a light screen, sharper silhouette, softer face. Match it to
-`THEME` in `palette.py` or the portrait will not sit with the other two
-panels.
+`--invert` on `make_banner.py` renders light ink on a dark screen, which
+concentrates glyph density on the face and gives it more detail. Without the
+flag, the default: dark ink on a light screen, sharper silhouette, softer
+face. Match it to `THEME` in `palette.py` or the banner will not sit with the
+calendar.
 
 ## Chassis
 
@@ -62,9 +67,8 @@ inside it, not a hairline stroke. All three generators call it, so widening
 `BEZEL_W` once changes every panel.
 
 Panel sizes are derived from their content, so changing `BEZEL_W` or `INSET`
-changes the SVG dimensions. The `width` attributes in the root `README.md`
-have to be recomputed to keep the two top panels the same height and their
-total equal to the calendar width.
+changes the SVG dimensions. Banner and calendar have to keep the same width,
+in the SVGs and in the `width` attributes of the root `README.md`.
 
 ## Palette
 
