@@ -14,6 +14,11 @@ Geometry, outermost first:
 
 from palette import BEZEL_INK, MONO, SCREEN, SHELL, WINE
 
+# Prompt identity, single source for every panel. Editing the generated SVGs
+# by hand does not survive: the daily workflow regenerates the calendar from
+# render_heatmap_svg.py and commits the revert.
+USER = "remyshift@github"
+
 HEADER_H = 30.0
 SHELL_PAD = 14.0
 BEZEL_W = 13.0
@@ -38,6 +43,11 @@ def canvas_size(content_w: float, content_h: float) -> tuple[float, float]:
 def content_origin() -> tuple[float, float]:
     """Top-left corner of the content area, inside the screen."""
     return SHELL_PAD + BEZEL_W + INSET, SHELL_PAD + HEADER_H + BEZEL_W + INSET
+
+
+def prompt(command: str) -> str:
+    """Shell prompt line shown above each panel."""
+    return f"{USER} ~ $ {command}"
 
 
 def styles() -> list[str]:

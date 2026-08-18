@@ -81,7 +81,7 @@ def build_svg(payload: dict) -> str:
         parts.append(f".w{d}{{animation-delay:{d * WAVE_STEP:.3f}s}}")
     parts.append("</style>")
 
-    parts.extend(chassis.build(width, height, "remy@github ~ $ ./contributions.sh"))
+    parts.extend(chassis.build(width, height, chassis.prompt("./contributions.sh")))
 
     for index, name in month_labels(weeks):
         x = grid_x + index * PITCH

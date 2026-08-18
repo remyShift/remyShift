@@ -1,5 +1,11 @@
 # Generating the profile SVGs
 
+**Never edit the SVG files by hand.** They are build output. The daily
+workflow regenerates `contrib-heatmap.svg` and commits it, so any manual edit
+there is reverted within hours, and `banner.svg` is overwritten the next time
+`make_banner.py` runs. Change the source instead: prompt identity lives in
+`USER` in `chassis.py`, identity rows in `ROWS` in `make_banner.py`.
+
 Three SVGs, all self-contained: GitHub serves README images through its own
 proxy, so an SVG cannot make any external request. System fonts, SMIL or
 embedded CSS animations, nothing else.

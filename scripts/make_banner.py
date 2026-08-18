@@ -19,7 +19,7 @@ import ascii_art
 import chassis
 from palette import INK, INK_DARK, INK_DIM, INK_LIGHT, KEY, MONO, SCREEN_DARK, SCREEN_LIGHT
 
-TITLE = "remy@github"
+TITLE = chassis.USER
 
 ROWS = [
     ("Role", "Freelance fullstack developer"),
@@ -97,7 +97,7 @@ def build_svg(matrix, invert: bool = False) -> str:
 
     parts.extend(
         f.replace(f'fill="{chassis.SCREEN}"', f'fill="{screen}"')
-        for f in chassis.build(width, height, f"{TITLE} ~ $ neofetch")
+        for f in chassis.build(width, height, chassis.prompt("whoiam"))
     )
 
     parts.append("<defs>")
