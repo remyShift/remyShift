@@ -1,53 +1,9 @@
 {
   "username": "remyShift",
-  "from": "2025-09-21",
-  "to": "2026-09-26",
-  "total": 3967,
+  "from": "2025-09-28",
+  "to": "2026-09-27",
+  "total": 3940,
   "weeks": [
-    [
-      {
-        "date": "2025-09-21",
-        "weekday": 0,
-        "level": 0,
-        "count": 0
-      },
-      {
-        "date": "2025-09-22",
-        "weekday": 1,
-        "level": 0,
-        "count": 0
-      },
-      {
-        "date": "2025-09-23",
-        "weekday": 2,
-        "level": 1,
-        "count": 4
-      },
-      {
-        "date": "2025-09-24",
-        "weekday": 3,
-        "level": 1,
-        "count": 12
-      },
-      {
-        "date": "2025-09-25",
-        "weekday": 4,
-        "level": 1,
-        "count": 8
-      },
-      {
-        "date": "2025-09-26",
-        "weekday": 5,
-        "level": 1,
-        "count": 3
-      },
-      {
-        "date": "2025-09-27",
-        "weekday": 6,
-        "level": 0,
-        "count": 0
-      }
-    ],
     [
       {
         "date": "2025-09-28",
@@ -2332,6 +2288,14 @@
       {
         "date": "2026-09-26",
         "weekday": 6,
+        "level": 0,
+        "count": 0
+      }
+    ],
+    [
+      {
+        "date": "2026-09-27",
+        "weekday": 0,
         "level": 0,
         "count": 0
       }
