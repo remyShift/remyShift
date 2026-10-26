@@ -1,8 +1,8 @@
 {
   "username": "remyShift",
   "from": "2025-10-26",
-  "to": "2026-10-25",
-  "total": 3848,
+  "to": "2026-10-26",
+  "total": 3849,
   "weeks": [
     [
       {
@@ -2298,6 +2298,12 @@
         "weekday": 0,
         "level": 0,
         "count": 0
+      },
+      {
+        "date": "2026-10-26",
+        "weekday": 1,
+        "level": 1,
+        "count": 1
       }
     ]
   ]
